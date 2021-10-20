@@ -24,6 +24,9 @@ from utils.evaluation import AverageMeter
 from utils.binary import assd
 from torch.optim.lr_scheduler import StepLR
 
+gpus = list(range(torch.cuda.device_count()))  ## auto get the gpu device  [0, 1]
+gpus_str = ','.join([str(x) for x in gpus])  ## convert str, 0, 1
+os.environ['CUDA_VISIBLE_DEVICES'] = '1'
 
 Test_Model = {'Comp_Atten_Unet': Comprehensive_Atten_Unet}
 
@@ -306,8 +309,9 @@ def main(args):
 
     if torch.cuda.is_available():
         print('We can use', torch.cuda.device_count(), 'GPUs to train the network')
+        # gpus = list(range(torch.cuda.device_count()))   ## [0, 1] construction list
         model = model.cuda()
-        # model = torch.nn.DataParallel(model, device_ids=list(range(torch.cuda.device_count())))
+        # model = torch.nn.DataParallel(model)
 
     # collect the number of parameters in the network
     print("------------------------------------------")
@@ -450,7 +454,7 @@ if __name__ == '__main__':
     # other arguments
     parser.add_argument('--data', default='ISIC2018', help='choose the dataset')
     parser.add_argument('--out_size', default=(224, 300), help='the output image size')
-    parser.add_argument('--val_folder', default='folder0', type=str,
+    parser.add_argument('--val_folder', default='folder1', type=str,
                         help='which cross validation folder')
 
     args = parser.parse_args()
@@ -459,7 +463,7 @@ if __name__ == '__main__':
         print("{:16} {}".format(key, value))
 
     args.ckpt = os.path.join(args.ckpt, args.data, args.val_folder, args.id)
-    print('Models are saved at %s' % (args.ckpt))
+    print('Models are saved at %s' % args.ckpt)
 
     if not os.path.isdir(args.ckpt):
         os.makedirs(args.ckpt)
