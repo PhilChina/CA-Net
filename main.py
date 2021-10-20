@@ -345,7 +345,7 @@ def main(args):
         else:
             print("=> No checkpoint found at '{}'".format(args.resume))
     # visualiser
-    vis = visdom.Visdom(env='CA-net')
+    vis = visdom.Visdom(env='CA-net')   # TODO: don't run visdom server, so there is a warning!!.  Visdom is a tools of data visualization
 
     print("Start training ...")
     for epoch in range(start_epoch + 1, args.epochs + 1):
