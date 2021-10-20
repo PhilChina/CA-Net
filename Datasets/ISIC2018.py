@@ -14,7 +14,7 @@ from torch.utils.data.dataset import Dataset
 
 class ISIC2018_dataset(Dataset):
     def __init__(self, dataset_folder='/ISIC2018_Task1_npy_all',
-                 folder='folder0', train_type='train', transform=None):
+                 folder='folder1', train_type='train', transform=None):
         self.transform = transform
         self.train_type = train_type
         self.folder_file = './Datasets/' + folder
