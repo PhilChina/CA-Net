@@ -6,7 +6,7 @@ from Models.networks_other import init_weights
 
 class _GridAttentionBlockND(nn.Module):
     def __init__(self, in_channels, gating_channels, inter_channels=None, dimension=3, mode='concatenation',
-                 sub_sample_factor=(2,2,2)):
+                 sub_sample_factor=(2, 2, 2)):
         super(_GridAttentionBlockND, self).__init__()
 
         assert dimension in [2, 3]
@@ -72,11 +72,11 @@ class _GridAttentionBlockND(nn.Module):
 
 
     def forward(self, x, g):
-        '''
+        """
         :param x: (b, c, t, h, w)
         :param g: (b, g_d)
         :return:
-        '''
+        """
 
         output = self.operation_function(x, g)
         return output

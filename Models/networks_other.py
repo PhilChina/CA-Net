@@ -13,7 +13,7 @@ import numpy as np
 
 def weights_init_normal(m):
     classname = m.__class__.__name__
-    #print(classname)
+    # print(classname)
     if classname.find('Conv') != -1:
         init.normal(m.weight.data, 0.0, 0.02)
     elif classname.find('Linear') != -1:
@@ -25,7 +25,7 @@ def weights_init_normal(m):
 
 def weights_init_xavier(m):
     classname = m.__class__.__name__
-    #print(classname)
+    # print(classname)
     if classname.find('Conv') != -1:
         init.xavier_normal(m.weight.data, gain=1)
     elif classname.find('Linear') != -1:
@@ -37,7 +37,7 @@ def weights_init_xavier(m):
 
 def weights_init_kaiming(m):
     classname = m.__class__.__name__
-    #print(classname)
+    # print(classname)
     if classname.find('Conv') != -1:
         init.kaiming_normal(m.weight.data, a=0, mode='fan_in')
     elif classname.find('Linear') != -1:
@@ -49,7 +49,7 @@ def weights_init_kaiming(m):
 
 def weights_init_orthogonal(m):
     classname = m.__class__.__name__
-    #print(classname)
+    # print(classname)
     if classname.find('Conv') != -1:
         init.orthogonal(m.weight.data, gain=1)
     elif classname.find('Linear') != -1:
@@ -60,7 +60,7 @@ def weights_init_orthogonal(m):
 
 
 def init_weights(net, init_type='normal'):
-    #print('initialization method [%s]' % init_type)
+    # print('initialization method [%s]' % init_type)
     if init_type == 'normal':
         net.apply(weights_init_normal)
     elif init_type == 'xavier':
@@ -108,7 +108,7 @@ def get_scheduler(optimizer, opt):
         scheduler = lr_scheduler.ReduceLROnPlateau(optimizer, mode='min', factor=0.2, threshold=0.01, patience=5)
     elif opt.lr_policy == 'step_warmstart':
         def lambda_rule(epoch):
-            #print(epoch)
+            # print(epoch)
             if epoch < 5:
                 lr_l = 0.1
             elif 5 <= epoch < 100:
@@ -121,7 +121,7 @@ def get_scheduler(optimizer, opt):
         scheduler = lr_scheduler.LambdaLR(optimizer, lr_lambda=lambda_rule)
     elif opt.lr_policy == 'step_warmstart2':
         def lambda_rule(epoch):
-            #print(epoch)
+            # print(epoch)
             if epoch < 5:
                 lr_l = 0.1
             elif 5 <= epoch < 50:
@@ -214,7 +214,7 @@ def measure_fp_bp_time(model, x, y):
     # zero gradients, synchronize time and measure
     model.zero_grad()
     t0 = time.time()
-    #y_pred.backward(y)
+    # y_pred.backward(y)
     y_pred.backward()
     torch.cuda.synchronize()
     elapsed_bp = time.time() - t0

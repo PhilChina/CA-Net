@@ -4,7 +4,7 @@ from torch.nn import functional as F
 
 
 def conv1x1(in_planes, out_planes, stride=1, bias=False):
-    "1x1 convolution"
+    """1x1 convolution"""
     return nn.Conv2d(in_planes, out_planes, kernel_size=1, stride=stride,
                      padding=0, bias=bias)
 

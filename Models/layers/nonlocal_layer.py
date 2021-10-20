@@ -315,7 +315,7 @@ if __name__ == '__main__':
     from torch.autograd import Variable
 
     mode_list = ['concatenation']
-    #mode_list = ['embedded_gaussian', 'gaussian', 'dot_product', ]
+    # mode_list = ['embedded_gaussian', 'gaussian', 'dot_product', ]
 
     for mode in mode_list:
         print(mode)
