@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="869e3ecc-fe15-4eea-a2c5-a32e58ed53d4" name="ddd">
+        <fileTransfer rootFolder="/deepblue/eric/eric/workspace/segmentation/CA-Net" accessType="SFTP" host="192.168.31.104" port="9848" sshConfigId="d1bfd253-2378-43ed-bfef-befe3b1ae570" sshConfig="root@192.168.31.104:9848 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
